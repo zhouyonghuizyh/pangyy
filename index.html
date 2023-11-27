@@ -1,0 +1,90 @@
+<!--
+ * @Author: zyh
+ * @Date: 2023-10-06 17:54:54
+ * @LastEditors: zyh
+ * @LastEditTime: 2023-11-27 20:52:18
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>小周与你同在</title>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+            background-image: url('https://raw.githubusercontent.com/we11cheng/we11cheng.github.io/master/bg.jpg');
+            /* background-image: url('https://img2.baidu.com/it/u=2852834593,2603461172&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1697821200&t=2fce29ed894c1dbf69f318ae81c6aa2f'); */
+            /* background-image: url('https://img2.baidu.com/it/u=2451510997,1067100847&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1699894800&t=628a04495402a93754ba865d0c6c57f1'); */
+            font-size: 85%;
+            margin: 0;
+        }
+        
+        h2 {
+            font-size: 220%;
+            font-weight: 400;
+            line-height: 70px;
+        }
+        
+        .content {
+            position: absolute;
+            width: 100%;
+            top: 40%;
+            transform: translate(0, -50%);
+            text-align: center;
+        }
+        
+        .timer {
+            font-size: 180%;
+            line-height: 1.5;
+            margin: 1em 0;
+        }
+        
+        .timer b {
+            color: rgb(253, 99, 125);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h2>小周&小庞 <br/>我们已经认识</h2>
+        <div class="timer">
+            <b id="d"></b> 天 <b id="h"></b> 小时 <b id="m"></b> 分 <b id="s"></b> 秒
+        </div>
+    </div>
+
+    <script>
+        function timer() {
+          window.setTimeout("show_date_time()", 1000);
+          var start = new Date("2023/11/26 16:31:00").getTime(); 
+          var t = new Date().getTime() - start; 
+            var h = ~~(t / 1000 / 60 / 60 % 24);
+            if (h < 10) {
+                h = "0" + h;
+            }
+            var m = ~~(t / 1000 / 60 % 60);
+            if (m < 10) {
+                m = "0" + m;
+            }
+            var s = ~~(t / 1000 % 60);
+            if (s < 10) {
+                s = "0" + s;
+            }
+            document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
+            document.getElementById('h').innerHTML = h;
+            document.getElementById('m').innerHTML = m;
+            document.getElementById('s').innerHTML = s;
+        }
+        timer();
+        setInterval(timer, 1000);
+    </script>
+</body>
+
+</html>
